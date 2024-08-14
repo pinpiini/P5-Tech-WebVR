@@ -35,28 +35,76 @@ if(isset($_POST["update"]) ) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
      <script src="https://kit.fontawesome.com/de8de52639.js" crossorigin="anonymous"></script>
      <title>Edit data buku || Admin</title>
+     <style>
+     .navbar {
+            background-color: #352E28; /* Ubah warna background navbar */
+        }
+
+        .navbar-brand img {
+            width: 120px;
+        }
+
+        .navbar-toggler {
+            border-color: #fff; /* Ubah warna ikon navbar toggle */
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); /* Ubah warna ikon navbar toggle */
+        }
+
+        body {
+            background-color: #2C241C;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .bg-body-tertiary {
+            background-color: #352E28; /* Ubah warna background body */
+        }
+
+        .bg-subtle {
+            background-color: #352E28; /* Ubah warna background footer */
+        }
+
+        .btn-success {
+            background-color: #5a9367; /* Ubah warna background tombol Tambah */
+            border-color: #5a9367; /* Ubah warna border tombol Tambah */
+        }
+
+        .btn-success:hover {
+            background-color: #4d7e5b; /* Ubah warna background tombol Tambah saat dihover */
+            border-color: #4d7e5b; /* Ubah warna border tombol Tambah saat dihover */
+        }
+
+        .btn-warning {
+            background-color: #E27D60; /* Ubah warna background tombol Reset */
+            border-color: #E27D60; /* Ubah warna border tombol Reset */
+        }
+
+        .btn-warning:hover {
+            background-color: #c97153; /* Ubah warna background tombol Reset saat dihover */
+            border-color: #c97153; /* Ubah warna border tombol Reset saat dihover */
+        }
+        </style>
   </head>
   <body>
-    <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="../../assets/logoNav.png" alt="logo" width="120px">
-        </a>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="../dashboardAdmin.php">Dashboard</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-success" href="daftarBuku.php">Browse</a>
-        </li>
-      </ul>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="../dashboardAdmin.php">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-success" href="daftarBuku.php">Browse</a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>
     
     <div class="container p-3 mt-5">
@@ -127,11 +175,10 @@ if(isset($_POST["update"]) ) {
   </div>
   
   <footer class="mt-5 shadow-lg bg-subtle p-3">
-      <div class="container-fluid d-flex justify-content-between">
-      <p class="mt-2">Created by <span class="text-primary"> Mangandaralam Sakti</span> © 2023</p>
-      <p class="mt-2">versi 1.0</p>
-      </div>
-    </footer>
+    <div class="container-fluid d-flex justify-content-between">
+        <p class="mt-2">P5 <span class="text-primary">Kelompok 1</span> </p>
+    </div>
+  </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>

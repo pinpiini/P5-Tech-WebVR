@@ -1,35 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>Get started</title>
-  </head>
-  <body>
-  <div class="container p-5">
-    <div class="d-flex justify-content-center">
-      <div class="card" style="width: 30rem;">
-        <img src="../assets/logoFooter.png" class="card-img-top" alt="logo">
-        <hr>
-      <div class="card-body pt-2">
-        <h3 class="card-text text-center">Portal Login Perpustakaan</h3>
-        <p class="card-text text-center">Silahkan pilih halaman login sesuai dengan status Anda</p>
-      </div>
-        <hr>
-      <div class="card-body pt-2">
-        <h4 class="card-text text-center">Akses Login</h4>
-        <div class="row gap-2 p-2">
-          <a class="btn btn-secondary" href="admin/sign_in.php">Admin</a>
-          <a class="btn btn-primary mb-2" href="member/sign_in.php">Siswa</a>
-          <hr>
-          <a class="btn btn-success" href="../index.php">Kembali</a>
-        </div>
-      </div>
-      </div>
-    </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Login Perpustakaan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: #2C241C;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+    }
+    .container {
+      padding: 5rem;
+    }
+    .logo {
+      width: 150px;
+      margin-bottom: 2rem;
+    }
+    .title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 3rem;
+    }
+    .btn {
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+    .btn-secondary {
+      background-color: #6C5B4B;
+      border-color: #6C5B4B;
+    }
+    .btn-primary {
+      background-color: #8B735B;
+      border-color: #8B735B;
+    }
+    .btn-success {
+      background-color: #5E7231;
+      border-color: #5E7231;
+    }
+  </style>
+</head>
+<body>
+  <div class="container text-center">
+    <img src="../assets/logo_p5.png" class="logo" alt="logo">
+    <div class="title">Portal Login Perpustakaan</div>
+    <div class="subtitle">Silahkan pilih halaman login sesuai dengan status Anda</div>
+    <a class="btn btn-secondary btn-lg mb-3" href="admin/sign_in.php">Admin</a><br>
+    <a class="btn btn-primary btn-lg mb-3" href="member/sign_in.php">Siswa</a><br>
+    <a class="btn btn-success btn-lg" href="../index.php">Kembali</a>
   </div>
-  
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  </body>
+</body>
 </html>

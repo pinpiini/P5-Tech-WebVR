@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Library</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+      body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+.video-bg video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    filter: brightness(50%);
+}
+
+nav {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+}
+
+.content .text {
+    margin-right: 30px;
+}
+
+.content .text h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.content .text p {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.content button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 5px;
+    transition: transform 0.2s;
+}
+
+.content button:hover {
+    transform: scale(1.05);
+}
+
+.content .image img {
+    max-width: 300px;
+    border: 5px solid #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    padding: 10px 0;
+    color: #fff;
+    z-index: 1;
+}
+
+content {
+      flex: 1; /* Fill remaining height */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .content-text {
+      text-align: center;
+      animation: fadeIn 3s ease-in-out;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @media (max-width: 767px) {
+      .navbar-nav {
+        flex-direction: row;
+      }
+      .logo {
+        height: auto;
+        width: 10vh;
+      }
+    }
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .content .text {
+        margin: 0 0 20px 0;
+    }
+
+    .content .image img {
+        max-width: 80%;
+    }
+}
+
+    </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="video-bg">
+        <video autoplay muted loop>
+            <source src="assets/bgvid.mp4" type="video/mp4">
+        </video>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.php">Home</a></li>
+            <li><button id="open-chatbot">Lisa</button></li> <!-- Button to open sidebar -->
+        </ul>
+    </nav>
+    <div class="content">
+    <div class="content-text">
+      <h1>Virtual Library</h1>
+      <a href="pre-joinvr.html"><button class="btn btn-primary me-2" >Virtual Experience</button></a>
+      <a href="galleryar.html"><button class="btn btn-secondary" >Coba AR</button></a>
+    </div>
+  </div>
+
+    <footer>
+        <p>&copy; 2024 P5 Kelompok 1</p>
+    </footer>
+    <div id="sidebar" class="sidebar">
+      <div class="chat-container">
+      <button id="close-chatbot">Close</button>
+      <div class="chat-header">
+        <img src="assets/ppbot1.jpg" alt="Bot Profile" class="bot-profile">
+        <span class="bot-name">Lisa 
+        <div class="menu">
+          <span class="menu-dot"></span>
+          <span class="menu-dot"></span>
+          <span class="menu-dot"></span>
+          <div class="menu-content">
+    
+            <button onclick="resetChat()">Clear Chat</button>
+            <button id="speech-toggle-button" class="speech-toggle-button" onclick="toggleSpeech()">Speech: OFF ✗</button>
+
+           
+          </div>
+        </div>
+      </div>
+      <div id="chat-box" class="chat-box"></div>
+      <div class="typing-indicator" id="typing-indicator">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div class="input-box">
+        <input type="text" id="user-input" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+      </div>
+
+  
+        <script src="scripts.js"></script>
+        <script>
+          // Get elements
+          document.addEventListener('DOMContentLoaded', function() {
+      var sidebar = document.getElementById('sidebar');
+      var openButton = document.getElementById('open-chatbot');
+      var closeButton = document.getElementById('close-chatbot');
+      var content = document.querySelector('.content');
+  
+      openButton.addEventListener('click', function() {
+          sidebar.style.right = '0';
+      });
+  
+      closeButton.addEventListener('click', function() {
+          sidebar.style.right = '-300px';
+      });
+  
+      content.addEventListener('click', function() {
+          sidebar.style.right = '-300px';
+      });
+  });
+  
+  // Global variable to track TTS state
+  let speechEnabled = false;
+  
+  // Function to toggle speech
+  function toggleSpeech() {
+    speechEnabled = !speechEnabled;
+    const speechToggleButton = document.getElementById("speech-toggle-button");
+    if (speechEnabled) {
+      speechToggleButton.textContent = "Speech: ON ✓";
+    } else {
+      speechToggleButton.textContent = "Speech: OFF ✗";
+    }
+  }
+  
+  // Function to speak the bot's reply
+  function speakBotReply(text) {
+    if ('speechSynthesis' in window) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'id-ID'; // Set language to Indonesian
+      speechSynthesis.speak(utterance);
+    } else {
+      console.error("Speech synthesis not supported.");
+    }
+  }
+  
+  // Function to add bot message with optional speech
+  function addBotMessage(text, withLink = false) {
+    const chatBox = document.getElementById("chat-box");
+    const messageElement = createMessageElement("bot", text, withLink);
+    chatBox.appendChild(messageElement);
+    chatBox.scrollTop = chatBox.scrollHeight;
+  
+    // Speak the bot's reply if speech is enabled
+    if (speechEnabled) {
+      speakBotReply(text);
+    }
+  }
+  
+  
+  
+  
+        </script>
+  </body>
+  
+  
+        </script>
+</body>
+</html>

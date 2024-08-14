@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Spatial Input</title>
+    <meta name="description" content="Spatial Input • A-Frame">
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-locomotion@0.2.0/dist/aframe-locomotion.umd.min.js"></script>
+    <script src="https://gftruj.github.io/hand.tracking.controls.extras/dist/aframe-hand-tracking-controls-extras.js"></script>
+    <script src="js/spatial/spatial-button.js"></script>
+    <script src="js/spatial/spatial-close-button.js"></script>
+    <script src="js/spatial/spatial-hero-image.js"></script>
+    <script src="js/spatial/spatial-modal-image.js"></script>
+    <script src="js/spatial/spatial-modal.js"></script>
+    <script src="js/spatial/spatial-utils.js"></script>
+    <script src="js/spatial/spatial-windows.js"></script>
+    <script src="js/spatial/tile.js"></script>
+    <script src="js/spatial/ui-controller.js"></script>
+    <script src="js/spatial/tile.js"></script>
+    <script src="js/random-color.js"></script>
+    <script src="js/snap.js"></script>
+    <script src="js/intersection-spawn.js"></script>
+    <script src="js/info-message.js"></script>
+    <script src="js/highlight.js"></script>
+    <script src="js/info-panel.js"></script>
+    <script src="js/joystick.js"></script>
+  </head>
+  <body>
+    <a-scene cursor="rayOrigin: mouse;" raycaster="objects: .tile, .start-button, .close-button, .raycastable" ui-controller joystick vr-mode-ui="enabled: false" look-controls="gyroEnabled: false;">
+      <a-assets>
+        <a-mixin
+          id="tile" tile="width: 0.400; height: 0.285"
+          animation__scale="property: scale; to: 1.02 1.02 1.02; dur: 100; startEvents: mouseenter"
+          animation__scale_reverse="property: scale; to: 1 1 1; dur: 100; startEvents: mouseleave">
+        </a-mixin>
+        <a-mixin
+          id="focus-animation"
+          animation__scale="property: object3D.position.z; to: -1.05; dur: 100; startEvents: unfocused"
+          animation__scale_reverse="property: object3D.position.z; to: -1; dur: 100; startEvents: focused">
+        </a-mixin>
+       
+
+        <img id="tn1" src="assets/mengapasiswagagal.jpg" crossorigin="anonymous"/>
+            <img id="tn1Poster" src="assets/mengapasiswagagal.jpg" crossorigin="anonymous"/>
+            <img id="tn2" src="assets/doraemon.png" crossorigin="anonymous"/>
+            <img id="tn2Poster" src="assets/doraemon.png" crossorigin="anonymous"/>
+            <img id="tn3" src="assets/sby.jpg" crossorigin="anonymous"/>
+            <img id="tn3Poster" src="assets/sby.jpg" crossorigin="anonymous"/>
+        
+        <a-mixin
+        id="frame"
+        geometry="primitive: plane; width: 1.1567104; height: 1.6384"
+        material="color: grey; shader: flat"
+        animation__scale="property: scale; to: 1.1 1.1 1.1; dur: 200; startEvents: mouseenter"
+        animation__scale_reverse="property: scale; to: 1 1 1; dur: 200; startEvents: mouseleave"
+      ></a-mixin>
+      <a-mixin
+        id="poster"
+        geometry="primitive: plane; width: 1.089536; height: 1.572864"
+        material="color: white; shader: flat"
+        position="0 0 0.01"
+      ></a-mixin>
+      <a-mixin
+        id="caseBuku"
+        geometry="primitive: plane; width: 1.25; height: 1.4"
+        material="src: #ponyo; shader: flat; transparent: true"
+        position="0 0.99 0.004"
+      ></a-mixin>
+
+      <a-mixin id="voxel"
+      geometry="primitive: box; height: 0.5; width: 0.5; depth: 0.5"
+      material="shader: standard"
+      random-color
+      snap="offset: 0.25 0.25 0.25; snap: 0.5 0.5 0.5"
+      ></a-mixin>
+      
+      <a-asset-item id="book" src="glb/book.glb"></a-asset-item>
+      <a-asset-item id="ac" src="glb/air_conditioner.glb"></a-asset-item>
+      <a-asset-item id="cctv" src="glb/cctv_camera.glb"></a-asset-item>
+      <a-asset-item id="ceilinglamp" src="glb/ceiling_light.glb"></a-asset-item>
+    </a-assets>
+
+    <a-light type="point" color="fff" position="7.088 8 0" intensity="0.5"></a-light>
+    <a-light type="point" color="fff" position="0 8 -44.53956" intensity="0.5"></a-light>
+    <a-light type="point" color="fff" position="0 8 12.86728" intensity="0.5"></a-light>
+    
+
+      <a-entity gltf-model="glb/perpusv2.glb" scale="0.8 0.8 0.8" position="1.62 -0.48 21.17" rotation="0 -8.38 -1.45"></a-entity>
+      <a-entity gltf-model="glb/interactive_whiteboard.glb" scale="0.58937 0.59763 0.5" position="-0.40539 1.50176 -0.96021" rotation="-1.318 173.656 -0.402"></a-entity>
+      <a-entity gltf-model="glb/banner.glb" scale="2 2 2" position="10.705 -0.67736 -27.25" rotation="81.157 87.406 31.405999999999995"></a-entity>
+      
+      
+      <a-entity
+      id="background"
+      position="0 0 0"
+      geometry="primitive: sphere; radius: 4.0"
+      material="color: red; side: back; shader: flat"
+      scale="0.002 0.002 0.002"
+      visible="false" class="raycastable">
+      </a-entity>   
+    
+      <a-entity
+        position="0 1.6 -53">
+          <a-entity
+            id="fadeBackground"
+            geometry="primitive: sphere; radius: 5.0"
+            material="color: black; side: back; shader: flat; transparent: true; opacity: 0.6" visible="false">
+          </a-entity>
+      </a-entity>
+
+        <a-entity spatial-modal="width: 1.2; height: 0.72" position="-0.319 1.176 -1.526" visible="true"rotation="-45 174.304 0" scale="1 0.908 1">
+         <a-entity spatial-modal-image="width: 0.6; height: 0.72" position="-0.33181 0 0.00767" ></a-entity>
+            <a-entity spatial-close-button="" position="0.55 0.31 0.001" class="close-button">
+            <a-entity geometry="primitive: plane; width: 0.050; height: 0.050" position="0 0 0.002" class="close-button"></a-entity>
+          </a-entity>
+        <a-text font="kelsonsans" class="movie-title" value="Hayao Miyazaki" align="left" width="0.75" position="0.03 0.2 0.001"></a-text>
+        <a-text font="kelsonsans" height="1" class="movie-synopsis" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." align="left" width="0.5" position="0.03 0.08 0.001"></a-text>
+        </a-entity>
+
+        <a-entity mixin="focus-animation" spatial-window="width: 1.775" position="-0.3554 2.2 -0.19828" animation__scale="dur: 100; property: object3D.position.z; startEvents: unfocused; to: -1.05" animation__scale_reverse="dur: 100; property: object3D.position.z; startEvents: focused; to: -1" rotation="0 174.312 0" visibile="true">
+          <a-entity spatial-hero-image="width: 1.775; src: [object HTMLImageElement]" position="0 0 0.001" visible="false">
+            <a-text font="kelsonsans" value="Comic List" align="center" width="3" position="0 0.29 0.001"></a-text>
+            <a-entity spatial-button="" position="0 0.06 0.001" class="start-button"><a-entity text="align: center; font: kelsonsans; value: Mulai; width: 0.75" position="0 0 0.005"></a-entity><a-entity text="align: center; font: kelsonsans; value: Mulai; width: 0.75" position="0 0 0.005"></a-entity></a-entity>
+          </a-entity>
+  
+          <a-entity id="image-grid" visible="true">
+            <!-- row -->
+            <a-entity mixin="tile" title="The Secret World of Arrietty (2010)" synopsis="Arrietty, a tiny teenager, lives with her parents in the recesses of a suburban home, unbeknown to the homeowner and housekeeper. Like others of her kind, Arrietty remains hidden from her human hosts." tile="src: https://cdn.aframe.io/examples/ui/karigurashi.jpg" position="-0.6435 0.318 0.01" opacity="0.5" class="tile" animation__scale="dur: 100; property: scale; startEvents: mouseenter; to: 1.02 1.02 1.02" animation__scale_reverse="dur: 100; property: scale; startEvents: mouseleave; to: 1 1 1"></a-entity>
+            <a-entity mixin="tile" title="Ponyo (2008)" synopsis="During a forbidden excursion to see the surface world, a goldfish princess encounters a human boy named Sosuke, who gives her the name Ponyo. Ponyo longs to become human, and as her friendship with Sosuke grows, she becomes more humanlike." tile="src: https://cdn.aframe.io/examples/ui/ponyo.jpg" position="-0.215 0.32 0.01" class="tile" animation__scale="dur: 100; property: scale; startEvents: mouseenter; to: 1.02 1.02 1.02" animation__scale_reverse="dur: 100; property: scale; startEvents: mouseleave; to: 1 1 1"></a-entity>
+            <a-entity mixin="tile" title="The Wind Rises (2013)" synopsis="A lifelong love of flight inspires Japanese aviation engineer Jiro Horikoshi (Hideaki Anno), whose storied career includes the creation of the A6M World War II fighter plane." tile="src: https://cdn.aframe.io/examples/ui/wind-raises1.jpg" position="0.2135 0.32 0.01" class="tile" animation__scale="dur: 100; property: scale; startEvents: mouseenter; to: 1.02 1.02 1.02" animation__scale_reverse="dur: 100; property: scale; startEvents: mouseleave; to: 1 1 1"></a-entity>
+            <a-entity mixin="tile" title="The Wind Rises (2013)" synopsis="A lifelong love of flight inspires Japanese aviation engineer Jiro Horikoshi (Hideaki Anno), whose storied career includes the creation of the A6M World War II fighter plane." tile="src: https://cdn.aframe.io/examples/ui/wind-raises2.jpg" position="0.642 0.32 0.01" class="tile" animation__scale="dur: 100; property: scale; startEvents: mouseenter; to: 1.02 1.02 1.02" animation__scale_reverse="dur: 100; property: scale; startEvents: mouseleave; to: 1 1 1"></a-entity>
+            <!-- row -->
+            <a-entity mixin="tile" title="The Wind Rises (2013)" synopsis="A lifelong love of flight inspires Japanese aviation engineer Jiro Horikoshi (Hideaki Anno), whose storied career includes the creation of the A6M World War II fighter plane." position="-0.6435 0 0.01" class="tile" animation__scale="dur: 100; property: scale; startEvents: mouseenter; to: 1.02 1.02 1.02" animation__scale_reverse="dur: 100; property: scale; startEvents: mouseleave; to: 1 1 1"></a-entity>
+            <a-entity mixin="tile" title="Spirited Away (2001)" synopsis="Miyazaki, 10-year-old Chihiro (Rumi Hiiragi) and her parents (Takashi Naitô, Yasuko Sawaguchi) stumble upon a seemingly abandoned amusement park. After her mother and father are turned into giant pigs, Chihiro meets the mysterious Haku." tile="src: https://cdn.aframe.io/examples/ui/spirited-away1.jpg" position="-0.215 0 0.01" class="tile" animation__scale="dur: 100; property: scale; startEvents: mouseenter; to: 1.02 1.02 1.02" animation__scale_reverse="dur: 100; property: scale; startEvents: mouseleave; to: 1 1 1"></a-entity>
+            <a-entity mixin="tile" title="Spirited Away (2001)" synopsis="Miyazaki, 10-year-old Chihiro (Rumi Hiiragi) and her parents (Takashi Naitô, Yasuko Sawaguchi) stumble upon a seemingly abandoned amusement park. After her mother and father are turned into giant pigs, Chihiro meets the mysterious Haku." tile="src: https://cdn.aframe.io/examples/ui/spirited-away2.jpg" position="0.2135 0 0.01" class="tile" animation__scale="dur: 100; property: scale; startEvents: mouseenter; to: 1.02 1.02 1.02" animation__scale_reverse="dur: 100; property: scale; startEvents: mouseleave; to: 1 1 1"></a-entity>
+            <a-entity mixin="tile" title="Spirited Away (2001)" synopsis="Miyazaki, 10-year-old Chihiro (Rumi Hiiragi) and her parents (Takashi Naitô, Yasuko Sawaguchi) stumble upon a seemingly abandoned amusement park. After her mother and father are turned into giant pigs, Chihiro meets the mysterious Haku." tile="src: https://cdn.aframe.io/examples/ui/spirited-away3.jpg" position="0.642 0 0.01" class="tile" animation__scale="dur: 100; property: scale; startEvents: mouseenter; to: 1.02 1.02 1.02" animation__scale_reverse="dur: 100; property: scale; startEvents: mouseleave; to: 1 1 1"></a-entity>
+  
+            <!-- row -->
+            <a-entity mixin="tile" title="Tales from Earthsea (2006)" synopsis="Something bizarre has come over the land. The kingdom is deteriorating. People are beginning to act strange... What's even more strange is that people are beginning to see dragons, which shouldn't enter the world of humans." tile="src: https://cdn.aframe.io/examples/ui/earth-sea1.jpg" position="-0.6435 -0.32 0.01" class="tile" animation__scale="dur: 100; property: scale; startEvents: mouseenter; to: 1.02 1.02 1.02" animation__scale_reverse="dur: 100; property: scale; startEvents: mouseleave; to: 1 1 1"></a-entity>
+            <a-entity mixin="tile" title="Tales from Earthsea (2006)" synopsis="Something bizarre has come over the land. The kingdom is deteriorating. People are beginning to act strange... What's even more strange is that people are beginning to see dragons, which shouldn't enter the world of humans." tile="src: https://cdn.aframe.io/examples/ui/earth-sea2.jpg" position="-0.215 -0.32 0.01" class="tile" animation__scale="dur: 100; property: scale; startEvents: mouseenter; to: 1.02 1.02 1.02" animation__scale_reverse="dur: 100; property: scale; startEvents: mouseleave; to: 1 1 1"></a-entity>
+            <a-entity mixin="tile" title="Tales from Earthsea (2006)" synopsis="Something bizarre has come over the land. The kingdom is deteriorating. People are beginning to act strange... What's even more strange is that people are beginning to see dragons, which shouldn't enter the world of humans." tile="src: https://cdn.aframe.io/examples/ui/earth-sea3.jpg" position="0.2135 -0.32 0.01" class="tile" animation__scale="dur: 100; property: scale; startEvents: mouseenter; to: 1.02 1.02 1.02" animation__scale_reverse="dur: 100; property: scale; startEvents: mouseleave; to: 1 1 1"></a-entity>
+            <a-entity mixin="tile" title="From Up on Poppy Hill (2011)" synopsis="It's 1963 and Japan is in the midst of swift modernisation, leaving behind the Second World War's painful memories and focusing on a brighter future, symbolised by the coming year's Tokyo Olympics." tile="src: https://cdn.aframe.io/examples/ui/poppy-hill1.jpg" position="0.642 -0.32 0.01" class="tile" animation__scale="dur: 100; property: scale; startEvents: mouseenter; to: 1.02 1.02 1.02" animation__scale_reverse="dur: 100; property: scale; startEvents: mouseleave; to: 1 1 1"></a-entity>
+          </a-entity>
+  
+        </a-entity>
+
+          <!-- Best of the Month section -->
+          <a-text value="Terbaik Bulan Ini"  position="8.540 4.7 17" rotation="0 -93.727 0" scale="1.5 1.5 1.5"></a-text>
+          <a-entity id="ui" position="8.540 2.9 17" scale="1.5 1.5 1.5" rotation="0 -93.727 0">
+            <!-- Poster menu -->
+            <a-entity id="menu" highlight>
+              <a-entity id="karigurashiButton" position="-1.6 0 0" mixin="frame" class="raycastable menu-button">
+                <a-entity material="src: #tn1Poster;" mixin="poster"></a-entity>
+              </a-entity>
+    
+              <a-entity id="kazetachinuButton" position="0 0 0" mixin="frame" class="raycastable menu-button">
+                <a-entity material="src: #tn2Poster" mixin="poster"></a-entity>
+              </a-entity>
+    
+              <a-entity id="ponyoButton" position="1.6 0 0" mixin="frame" class="raycastable menu-button">
+                <a-entity material="src: #tn3Poster" mixin="poster"></a-entity>
+              </a-entity>
+            </a-entity>
+    
+            <!-- Info panel of the selected movie. -->
+            <a-entity
+              id="infoPanel"
+              position="0 0 1"
+              info-panel
+              visible="false"
+              scale="0.001 0.001 0.001"
+              geometry="primitive: plane; width: 1.25; height: 1.4"
+              material="color: #333333; shader: flat; transparent: false" class="raycastable">
+              <a-entity id="card1" mixin="caseBuku" material="src: #tn1" visible="false"></a-entity>
+              <a-entity id="card2" mixin="caseBuku" material="src: #tn2" visible="false"></a-entity>
+              <a-entity id="card3" mixin="caseBuku" material="src: #tn3" visible="false"></a-entity>
+              <a-entity id="movieTitle"
+                position="-0.571 0.103 0"
+                text="shader: msdf; anchor: left; width: 1.5; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; color: white; value: Ponyo (2003)"></a-entity>
+              <a-entity id="movieDescription"
+                position="-0.561 -0.034 0"
+                text="baseline: top; shader: msdf; anchor: left; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; color: white; value: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."></a-entity>
+            </a-entity>
+          </a-entity>
+
+          <a-entity id="enable-button" geometry="primitive: plane; height: 0.1; width: 0.3" material="color: green" position="0.69163 1.5 -1" class="raycastable" text="align: center; value: Enable" onclick="enableSpawn()" rotation="0 180 0" scale="1 1.99 1">
+          </a-entity>
+          <a-entity id="disable-button" geometry="primitive: plane; height: 0.1; width: 0.3" material="color: red" position="0.68982 1.28825 -1.00026" class="raycastable" text="align: center; value: Disable" onclick="disableSpawn()" rotation="0 180 0" scale="1 1.77 1"></a-entity>
+
+          <a-plane color="#fff" height="20" width="20" position="2.05969 -0.29377 17.71429" visible="" scale="-0.34179 0.36 -4.01" rotation="90 0 0.02" class="spawn-plane"></a-plane>
+          <!-- Camera rig -->
+          <a-entity id="rig" position="3 0.8 0">
+            <a-camera id="camera"></a-camera>
+            <a-entity class="camera-cursor"
+                      raycaster="objects: .tile, .start-button, .close-button, .raycastable"
+                      cursor
+                      geometry="primitive: circle; radius: 0.005"
+                      material="color: #283644; shader: flat"
+                      position="0 0 -0.75">
+            </a-entity>
+    
+            <!-- Hands -->0
+            <a-entity oculus-touch-controls="hand: left"
+                      smooth-locomotion="target: #rig; reference: #camera; moveSpeed: 1.5; inputMode: binary;"
+                      raycaster="objects: .tile, .start-button, .close-button, #enable-button, #disable-button, .raycastable">
+            </a-entity>
+            
+            <a-entity id="rightHand"
+                      oculus-touch-controls="hand: right"
+                      smooth-turn="target: #rig; reference: #camera; turnSpeed: 50;"
+                      raycaster="objects: .tile, .start-button, .close-button, #enable-button, #disable-button, .spawn-plane" laser-controls>
+            </a-entity>
+            
+            <!-- left hand can teleport, and drag the world position -->
+            <a-entity hand-tracking-controls="hand: left" hand-tracking-extras
+                      hand-teleport="rig: #rig; origin: #camera" drag-move="rig: #rig; speed: 5">
+            </a-entity>
+            
+            <!-- right hand can rotate the world by dragging -->
+            <a-entity hand-tracking-controls="hand: right" hand-tracking-extras drag-rotate="rig: #rig">
+            </a-entity>
+          </a-entity>
+        </a-scene>
+      </body>
+      <script>
+        function enableSpawn() {
+          document.querySelector('#rightHand').setAttribute('intersection-spawn', 'event: click; mixin: voxel');
+        }
+    
+        function disableSpawn() {
+          document.querySelector('#rightHand').removeAttribute('intersection-spawn');
+        }
+      </script>
+    </html>

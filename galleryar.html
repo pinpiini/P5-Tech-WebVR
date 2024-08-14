@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar Buku</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <style>
+    body {
+      background-color: #f8f9fa;
+      height:100vh;
+    }
+    .navbar-custom {
+      background-color: #343a40;
+    }
+    .navbar-custom .navbar-brand, .navbar-custom .nav-link {
+      color: #ffffff;
+    }
+    .card-custom {
+      margin: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+    .card-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .card-rating {
+      font-size: 1rem;
+      color: #ffc107;
+    }
+    .container-custom {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .footer-custom {
+      background-color: #343a40;
+      color: #ffffff;
+      height: 10vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="perpus.html">Beranda</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        
+      </div>
+    </div>
+  </nav>
+
+  <!-- Container untuk card -->
+  <div class="container-custom">
+    <!-- Card 1 -->
+    <div class="card card-custom" style="width: 18rem;">
+      <img src="assets/doraemon.png" class="card-img-top" alt="Gambar Buku 1">
+      <div class="card-body">
+        <h5 class="card-title">Cerita Spesial Doraemon: Canda</h5>
+        <p class="card-text">Komik Cerita Spesial Doraemon: Canda karya Fujiko F. Fujio menjadi salah satu komik yang wajib untuk diikuti. Komik ini memiliki konsep cerita cukup unik dan mengesankan sehingga berbeda dari komik lainnya. Nobita panik, karena dirinya tidak mempunyai keahlian yang bisa dipentaskan di acara perpisahan. Padahal dalam acara perpisahan itu, setiap anak harus membuat sebuah atraksi. Berkat ide aneh Doraemon, Nobita tampil bermusik kentut. Doraemon selalu punya cerita menarik. Komik best seller. Yuk, mulai ikuti dan simak serial komik ini!</p>
+        <p class="card-rating">⭐⭐⭐⭐☆</p>
+        <a href="arsite/dorar.html" class="btn btn-primary">Coba AR</a>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card card-custom" style="width: 18rem;">
+      <img src="assets/sby.jpg" class="card-img-top" alt="Gambar Buku 2">
+      <div class="card-body">
+        <h5 class="card-title">SBY Selalu Ada Pilihan</h5>
+        <p class="card-text">Sebagai Presiden yang memimpin di era transisi dan era politik gaduh ini, tentu tak sedikit pula permasalahan dan tantangan yang dihadapinya. Di penghujung masa kepresidenannya, SBY menulis sendiri pengalaman dan suka-dukanya selama memimpin negeri ini.</p>
+        <p class="card-rating">⭐⭐⭐⭐⭐</p>
+        <a href="arsite/sbyar.html" class="btn btn-primary">Coba AR</a>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card card-custom" style="width: 18rem;">
+      <img src="assets/kau,aku.jpg" class="card-img-top" alt="Gambar Buku 3">
+      <div class="card-body">
+        <h5 class="card-title">Kau, Aku dan Sepucuk Angpau Merah</h5>
+        <p class="card-text">Cinta hanyalah segumpal perasaan dalam hati. Sama halnya dengan gumpal perasaan senang, gembira, sedih, sama dengan kau suka makan gulai kepala ikan, suka mesin. Bedanya, kita selama ini terbiasa mengistimewakan gumpal perasaan yang disebut cinta. Kita beri dia porsi lebih penting, kita besarkan, terus menggumpal membesar. Coba saja kau cuekin, kau lupakan, maka gumpal cinta itu juga dengan cepat layu seperti kau bosan makan gulai kepala ikan.</p>
+        <p class="card-rating">⭐⭐⭐⭐☆</p>
+        <a href="arsite/msgar.html" class="btn btn-primary">Coba AR</a>
+      </div>
+    </div>
+</div>
+<!-- Footer -->
+<footer class="footer-custom">
+  <p>&copy; 2024 P5 Kelompok 1</p>
+</footer>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <script src="scripts.js"></script>
+  <script>
+    // Get elements
+    document.addEventListener('DOMContentLoaded', function() {
+var sidebar = document.getElementById('sidebar');
+var openButton = document.getElementById('open-chatbot');
+var closeButton = document.getElementById('close-chatbot');
+var content = document.querySelector('.content');
+
+openButton.addEventListener('click', function() {
+    sidebar.style.right = '0';
+});
+
+closeButton.addEventListener('click', function() {
+    sidebar.style.right = '-300px';
+});
+
+content.addEventListener('click', function() {
+    sidebar.style.right = '-300px';
+});
+});
+
+
+
+  </script>
+</body>
+</html>

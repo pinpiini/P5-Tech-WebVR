@@ -1,92 +1,131 @@
-<!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/de8de52639.js" crossorigin="anonymous"></script>
-    <title>PesatLibrary.com</title>
-    <link rel="icon" href="assets/..." type="image/png">
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Dark Themed Website</title>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="index.css">
   </head>
   <body>
-    <!--Navbar-->
-   <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary shadow-sm justify-space-between">
-  <div class="container-fluid">
-    <img src="assets/..." alt="logo" width="120px">
-    <a href="sign/link_login.html" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </a>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#homeSection">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#aboutSection">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#footer">Contact</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <section id="homeSection" class="p-5">
-      <div class="d-flex flex-wrap justify-content-center">
-        <div class="col mt-5">
-         <h2 class="fw-bold text-success"><span class="text-primary">Pesat </span>E-Library</h2>
-          <p class="mb-4">"Perpustakaan dengan inovasi teknologi terkini! <br> Perpustakaan Digital <span class="fw-bold">Pesat E-Library</span> Membawa Anda ke Dunia Buku Digital."</p>
-          <a class="btn btn-primary" href="sign/link_login.html">Masuk</a>
-        </div>
-        <div class="col mt-3">
-          <img src="assets/logoDashboard-transforme.jpeg" width="450px">
-        </div>
-      </div>
-    </section>
-    
-    <section class="bg-body-secondary p-5" id="aboutSection">
-      <div class="row">
-          <div class="d-flex">
-            <h2 class="text-primary">About</h2>
+      
+      <nav>
+          <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Services</a></li>
+              <li><button id="open-chatbot">Librabot</button></li> <!-- Button to open sidebar -->
+          </ul>
+      </nav>
+      <div class="content">
+          <div class="content-text">
+          <h1>PESAT Digital Library</h1>
+          <p>Temukan buku-buku favoritmu di sini!</p>
+          <a href="sign/link_login.html"><button class="btn btn-primary me-2" >Login</button></a>
+          <a href="perpus.html"><button class="btn btn-primary me-2" >Virtual Library</button></a>
+        
           </div>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores tempora eum, cumque voluptatem porro veniam ea delectus doloremque voluptates assumenda iure id quibusdam! Nemo eaque doloribus minima natus temporibus adipisci deleniti quis delectus suscipit fugit itaque laboriosam consectetur accusamus totam, dignissimos perferendis a tempora recusandae rerum debitis incidunt! Numquam nemo architecto consequatur id repellendus similique ratione praesentium unde, sed, iste harum assumenda vitae. Impedit non ea velit molestiae dolor cupiditate, a soluta quam odit repudiandae ipsum voluptatum provident ullam illum totam necessitatibus dolore maxime? Itaque nostrum minima, ipsa quasi mollitia rerum? Culpa veritatis eligendi nihil reprehenderit. Quisquam facilis odio dignissimos.</p>
-      </div>
-      <div class="d-flex justify-content-center">
-        <h3 class="text-secondary">Dikembangkan Oleh :</h3>
       </div>
 
-    <div class="d-flex justify-content-center flex-wrap gap-4 mt-4">
-      <div class="card border-info mb-3" style="max-width: 18rem;">
-        <div class="card-header">Kelompok 1 P5 X REG 5</div>
-        <div class="card-body">
-          <h5 class="card-title">Kevin, Pandu, Halifa, Raydia, Fadil, Shafa, Vega, Meidylla</h5>
+      <footer>
+          <p>&copy; 2024 P5 Kelompok 1</p>
+      </footer>
+
+      <div id="sidebar" class="sidebar">
+      <div class="chat-container">
+      <button id="close-chatbot">Close</button>
+      <div class="chat-header">
+        <img src="assets/ppbot1.jpg" alt="Bot Profile" class="bot-profile">
+        <span class="bot-name">Lisa 
+        <div class="menu">
+          <span class="menu-dot"></span>
+          <span class="menu-dot"></span>
+          <span class="menu-dot"></span>
+          <div class="menu-content">
+    
+            <button onclick="resetChat()">Clear Chat</button>
+            <button id="speech-toggle-button" class="speech-toggle-button" onclick="toggleSpeech()">Speech: OFF ✗</button>
+
+           
+          </div>
         </div>
+      </div>
+      <div id="chat-box" class="chat-box"></div>
+      <div class="typing-indicator" id="typing-indicator">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div class="input-box">
+        <input type="text" id="user-input" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
       </div>
     </div>
-    </section>
-    
-    <footer id="footer" class="p-3 bg-dark">
-      <div class="row">
-        <div class="col">
-          <img src="assets/..." width="200px">
-        </div>
       </div>
-      <div class="row p-3">
-        <div class="col mt-3">
-          <h3 class="text-light fs-5">Alamat</h3>
-          <p class="text-secondary fs-6">...</p>
-        </div>
-        <hr class="text-light mt-3">
-        <div class="d-flex justify-content-center gap-4">
-          <a href="" class="fs-3"><i class="fa-brands fa-github"></i></a>
-          <a href="" class="fs-3"><i class="fa-brands fa-telegram"></i></a>
-          <a href="" class="fs-3"><i class="fa-brands fa-instagram"></i></a>
-        </div>
-       
-      </div>
-    </footer>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+      <script src="scripts.js"></script>
+      <script>
+        // Get elements
+        document.addEventListener('DOMContentLoaded', function() {
+    var sidebar = document.getElementById('sidebar');
+    var openButton = document.getElementById('open-chatbot');
+    var closeButton = document.getElementById('close-chatbot');
+    var content = document.querySelector('.content');
+
+    openButton.addEventListener('click', function() {
+        sidebar.style.right = '0';
+    });
+
+    closeButton.addEventListener('click', function() {
+        sidebar.style.right = '-300px';
+    });
+
+    content.addEventListener('click', function() {
+        sidebar.style.right = '-300px';
+    });
+});
+
+// Global variable to track TTS state
+let speechEnabled = false;
+
+// Function to toggle speech
+function toggleSpeech() {
+  speechEnabled = !speechEnabled;
+  const speechToggleButton = document.getElementById("speech-toggle-button");
+  if (speechEnabled) {
+    speechToggleButton.textContent = "Speech: ON ✓";
+  } else {
+    speechToggleButton.textContent = "Speech: OFF ✗";
+  }
+}
+
+// Function to speak the bot's reply
+function speakBotReply(text) {
+  if ('speechSynthesis' in window) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'id-ID'; // Set language to Indonesian
+    speechSynthesis.speak(utterance);
+  } else {
+    console.error("Speech synthesis not supported.");
+  }
+}
+
+// Function to add bot message with optional speech
+function addBotMessage(text, withLink = false) {
+  const chatBox = document.getElementById("chat-box");
+  const messageElement = createMessageElement("bot", text, withLink);
+  chatBox.appendChild(messageElement);
+  chatBox.scrollTop = chatBox.scrollHeight;
+
+  // Speak the bot's reply if speech is enabled
+  if (speechEnabled) {
+    speakBotReply(text);
+  }
+}
+
+
+
+
+      </script>
   </body>
-</html>
+  </html>
